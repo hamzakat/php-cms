@@ -1,6 +1,5 @@
 # PHP Articles
 
-This is submission for https://github.com/humansis/php-assignment
 
 ## Technologies
 
