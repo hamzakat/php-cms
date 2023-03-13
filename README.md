@@ -1,11 +1,11 @@
-# PHP Articles
+# PHP CMS
 
 
-## Technologies
+## Tech Stack
 
 - PHP 7 (Pure PHP, without external libraries)
 - MySQL (connection managed using PDO)
-- Tailwind CSS for page styling
+- TailwindCSS for page styling
 
 ## Demonstrated Design Patterns
 
