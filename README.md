@@ -1,4 +1,4 @@
-# PHP CMS
+# PHP Guestbook (minimal CMS)
 
 
 ## Tech Stack
