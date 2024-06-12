@@ -2,15 +2,15 @@
 
 class Comment
 {
-    private $articleId;
+    private $postId;
     private $contributorName;
     private $contributorEmail;
     private $publishDate;
     private $text;
 
-    function __construct($articleId, $contributorName, $contributorEmail, $publishDate, $text)
+    function __construct($postId, $contributorName, $contributorEmail, $publishDate, $text)
     {
-        $this->articleId = $articleId;
+        $this->postId = $postId;
         $this->contributorName = $contributorName;
         $this->contributorEmail = $contributorEmail;
         $this->publishDate = $publishDate;
@@ -20,9 +20,9 @@ class Comment
     /**
      * Using factory pattern
      */
-    public static function makeComment($articleId, $contributorName, $contributorEmail, $text)
+    public static function makeComment($postId, $contributorName, $contributorEmail, $text)
     {
-        $commentObj = new Comment($articleId, $contributorName, $contributorEmail, 0, $text);
+        $commentObj = new Comment($postId, $contributorName, $contributorEmail, 0, $text);
         return $commentObj;
     }
 
@@ -47,13 +47,13 @@ class Comment
     }
 
     /**
-     * Get the value of articleId
+     * Get the value of postId
      *
      * @return  mixed
      */
-    public function getArticleId()
+    public function getPostId()
     {
-        return $this->articleId;
+        return $this->postId;
     }
 
     /**

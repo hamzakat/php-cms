@@ -1,30 +1,30 @@
 <?php
 
 require_once 'BaseDao.php';
-require_once SITE_ROOT . '/models/Article.php';
+require_once SITE_ROOT . '/models/Post.php';
 
-class ArticleDAO extends BaseDAO
+class PostDAO extends BaseDAO
 {
     protected function getModelClass()
     {
-        return 'Article';
+        return 'Post';
     }
 
     protected function getModelTable()
     {
-        return 'articles';
+        return 'posts';
     }
 
-    public function add($article)
+    public function add($post)
     {
         $query = "INSERT INTO " . $this->getModelTable() . " (title, contributorName, text) VALUES (:title, :contributorName, :text)";
 
         if ($stmt = $this->pdo->prepare($query)) {
 
             // Bind variables to the prepared statement parameters
-            $stmt->bindParam(":title", $article->getTitle());
-            $stmt->bindParam(":contributorName", $article->getContributorName());
-            $stmt->bindParam(":text", $article->getText());
+            $stmt->bindParam(":title", $post->getTitle());
+            $stmt->bindParam(":contributorName", $post->getContributorName());
+            $stmt->bindParam(":text", $post->getText());
 
             $result = $stmt->execute();
             return $result;

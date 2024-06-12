@@ -1,7 +1,7 @@
 <?php
-$PAGE_TITLE = "Add Article";
+$PAGE_TITLE = "Add Post";
 require_once "configs.php";
-require_once "controllers/ArticlesController.php";
+require_once "controllers/PostsController.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate title
     $inputTitle = trim($_POST["title"]);
     if (empty($inputTitle)) {
-        $titleErr = "Please enter the article title.";
+        $titleErr = "Please enter the post title.";
     } else {
         $title = $inputTitle;
     }
@@ -24,15 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate text
     $inputText = nl2br($_POST["text"]);
     if (empty($inputText)) {
-        $textErr = "Please enter the article content.";
+        $textErr = "Please enter the post content.";
     } else {
         $text = $inputText;
     }
 
     // Check if there is invalid input  before adding post
     if (empty($nameErr) && empty($titleErr) && empty($textErr)) {
-        $newArticle = Article::makeArticle($name, $title, $text);
-        $result = $articlesController->add($newArticle);
+        $newPost = Post::makePost($name, $title, $text);
+        $result = $postsController->add($newPost);
         if ($result) {
             // created successfully, therefore, refresh the page
             header("location: index.php");

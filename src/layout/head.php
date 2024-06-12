@@ -15,7 +15,7 @@
     <section class="text-gray-600 body-font mt-5">
 
         <?php
-        if ($PAGE_TITLE != "Articles") { ?>
+        if ($PAGE_TITLE != "Posts") { ?>
             <div class="container lg:w-2/ md:w-3/4 px-5 mb-10 mx-auto">
                 <a href="index.php" class="text-indigo-500 inline-flex items-center mt-4">
 

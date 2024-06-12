@@ -12,8 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for table cms.articles
-CREATE TABLE IF NOT EXISTS `articles` (
+-- Dumping structure for table cms.posts
+CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `publishDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 -- Dumping structure for table cms.comments
 CREATE TABLE IF NOT EXISTS `comments` (
-  `articleId` int(10) unsigned NOT NULL,
+  `postId` int(10) unsigned NOT NULL,
   `contributorName` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `contributorEmail` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `publishDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

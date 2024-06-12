@@ -1,5 +1,5 @@
-# PHP Guestbook (minimal CMS)
-
+# PHP Guestbook
+My personal guestbook (post wall for visitors!)
 
 ## Tech Stack
 

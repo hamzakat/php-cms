@@ -1,21 +1,21 @@
 <?php
 
 require_once "configs.php";
-require_once "controllers/ArticlesController.php";
+require_once "controllers/PostsController.php";
 require_once "controllers/CommentsController.php";
 
-// Article objects 
-$article = $articlesController->getArticleById($_GET['id']);
+// Post objects 
+$post = $postsController->getPostById($_GET['id']);
 
-if (empty($article)) {
+if (empty($post)) {
     http_response_code(404);
     include('404.php');
     die();
 }
-$PAGE_TITLE = $article->getTitle();
+$PAGE_TITLE = $post->getTitle();
 
 // array of comments
-$comments = $commentsController->getAll($arg = $article->getId());
+$comments = $commentsController->getAll($arg = $post->getId());
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate email
     $inputEmail = trim($_POST["email"]);
     if (empty($inputEmail)) {
-        $emailErr = "Please enter the article title.";
+        $emailErr = "Please enter the post title.";
     } else {
         $email = $inputEmail;
     }
@@ -38,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate text
     $inputText = nl2br($_POST["text"]);
     if (empty($inputText)) {
-        $textErr = "Please enter the article content.";
+        $textErr = "Please enter the post content.";
     } else {
         $text = $inputText;
     }
 
     // Check if there is invalid input  before adding post
     if (empty($nameErr) && empty($emailErr) && empty($textErr)) {
-        $newComment = Comment::makeComment($article->getId(), $name, $email, $text);
+        $newComment = Comment::makeComment($post->getId(), $name, $email, $text);
         $result = $commentsController->add($newComment);
         if ($result) {
             // created successfully, therefore, refresh the page
@@ -61,17 +61,17 @@ require "layout/head.php";
 
 ?>
 
-<!-- Article -->
+<!-- Post -->
 <section class="text-gray-600 body-font relative">
     <div class="container px-5 py-15 lg:w-2/ md:w-3/4 mx-auto">
         <div class="flex justify-between mb-6">
-            <span>By <strong><?php echo $article->getContributorName() ?></strong></span>
-            <span class="text-xs text-gray-400"><?php echo $article->getPublishDate() ?></span>
+            <span>By <strong><?php echo $post->getContributorName() ?></strong></span>
+            <span class="text-xs text-gray-400"><?php echo $post->getPublishDate() ?></span>
         </div>
 
         <p class="">
             <?php
-            echo $article->getText();
+            echo $post->getText();
             ?>
         </p>
 
@@ -83,7 +83,7 @@ require "layout/head.php";
     <h3 class="mb-4 text-xl font-semibold text-gray-900">Comments</h3>
 
     <div class="divide-y-2 divide-gray-100">
-        <!-- If there is no article -->
+        <!-- If there is no post -->
         <?php if (empty($comments)) { ?>
             <div class="py-8 flex flex-wrap md:flex-nowrap">
                 <i>No comments.</i>

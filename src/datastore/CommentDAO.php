@@ -17,12 +17,12 @@ class CommentDAO extends BaseDAO
 
     public function add($comment)
     {
-        $query = "INSERT INTO " . $this->getModelTable() . " (articleId, contributorName, contributorEmail, text) VALUES (:articleId, :contributorName, :contributorEmail, :text)";
+        $query = "INSERT INTO " . $this->getModelTable() . " (postId, contributorName, contributorEmail, text) VALUES (:postId, :contributorName, :contributorEmail, :text)";
 
         if ($stmt = $this->pdo->prepare($query)) {
 
             // Bind variables to the prepared statement parameters
-            $stmt->bindParam(":articleId", $comment->getArticleId());
+            $stmt->bindParam(":postId", $comment->getPostId());
             $stmt->bindParam(":contributorName", $comment->getContributorName());
             $stmt->bindParam(":contributorEmail", $comment->getContributorEmail());
             $stmt->bindParam(":text", $comment->getText());
@@ -35,9 +35,9 @@ class CommentDAO extends BaseDAO
 
     public function getAll($arg)
     {
-        $query = "SELECT * FROM " . $this->getModelTable() . " WHERE articleId = :articleId;";
+        $query = "SELECT * FROM " . $this->getModelTable() . " WHERE postId = :postId;";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':articleId', $arg);
+        $stmt->bindParam(':postId', $arg);
 
 
         if ($stmt->execute()) {
