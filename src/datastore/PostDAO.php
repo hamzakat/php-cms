@@ -1,6 +1,6 @@
 <?php
 
-require_once 'BaseDao.php';
+require_once 'BaseDAO.php';
 require_once SITE_ROOT . '/models/Post.php';
 
 class PostDAO extends BaseDAO
